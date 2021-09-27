@@ -8,5 +8,5 @@ echo "######################"
 echo "*** Building image ***"
 echo "######################"
 
-cd ./deployment/appBuild/ && docker-compose -f docker-compose-build.yml build --no-cache
+cd ./deployment/appBuild/ && docker build -t appgate-calculator:$BUILD_TAG .
 

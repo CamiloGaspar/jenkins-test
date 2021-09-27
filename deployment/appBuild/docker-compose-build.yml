@@ -4,5 +4,5 @@ services:
     image: "appgate-calculator:$BUILD_TAG"
     build:
       context: .
-      dockerfile: Dockerfile-Java
+      dockerfile: Dockerfile
 
