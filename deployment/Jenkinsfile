@@ -3,7 +3,7 @@ pipeline {
         dockerfile {
                 filename 'Dockerfile.build'
                 dir './deployment/appBuild'
-                label 'appgate:$BUILD_TAG'
+                label 'appgate-calculator'
             }
     }
     stages {
