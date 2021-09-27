@@ -2,11 +2,11 @@
 
 # Copia el jar
 
-cp -f ../target/*.jar ./build/
+cp -f ./target/*.jar ./deployment/appBuild/
 
 echo "######################"
 echo "*** Building image ***"
 echo "######################"
 
-cd ./build/ && docker-compose -f docker-compose-build.yml build --no-cache
+cd ./deployment/appBuild/ && docker-compose -f docker-compose-build.yml build --no-cache
 

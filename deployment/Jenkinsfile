@@ -6,7 +6,6 @@ pipeline {
                 sh '''
 			./deployment/appBuild/mvn.sh mvn -B -DskipTests clean package
 			./deployment/appBuild/build.sh
-
                     '''   
             }
             post {
