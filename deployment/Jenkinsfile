@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+			./build/mvn.sh mvn -B -DskipTests clean package
+			./build/build.sh
+           
+                    '''   
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'java-app/target/*.jar', fingerprint: true
+                }
+            }
+        }                        
+        stage('Test') {
+            steps {
+		sh './jenkins/test/test.sh mvn test' 
+            }
+            post {
+                always {
+                    junit 'java-app/target/surefire-reports/*.xml'
+                }
+	    }
+    }
+}
