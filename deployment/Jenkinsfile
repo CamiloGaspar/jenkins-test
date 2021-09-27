@@ -4,16 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-            pwd
-            ls
-			./build/mvn.sh mvn -B -DskipTests clean package
-			./build/build.sh
+			./deployment/build/mvn.sh mvn -B -DskipTests clean package
+			./deployment/build/build.sh
            
                     '''   
             }
             post {
                 success {
-                    archiveArtifacts artifacts: '../target/*.jar', fingerprint: true
+                    archiveArtifacts artifacts: './target/*.jar', fingerprint: true
                 }
             }
         }
