@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+            pwd
 			./build/mvn.sh mvn -B -DskipTests clean package
 			./build/build.sh
            
