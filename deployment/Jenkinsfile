@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh '''
             pwd
+            ls
 			./build/mvn.sh mvn -B -DskipTests clean package
 			./build/build.sh
            
