@@ -1,8 +1,9 @@
 pipeline {
     agent {
         dockerfile {
-                filename 'Dockerfile'
+                filename 'Dockerfile.build'
                 dir './deployment/appBuild'
+                label 'appgate:$BUILD_TAG'
             }
     }
     stages {
@@ -10,7 +11,7 @@ pipeline {
             steps {
                 sh '''
 			./mvnw -B -DskipTests clean package
-			./deployment/appBuild/build.sh
+			cp -f ./target/*.jar ./deployment/appBuild/
                     '''   
             }
         }
