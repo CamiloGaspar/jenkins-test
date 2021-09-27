@@ -4,9 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-            ls
-			./mvnw -B -DskipTests clean package
-			./deployment/build/build.sh
+			./deployment/appBuild/mvn.sh mvn -B -DskipTests clean package
+			./deployment/appBuild/build.sh
+
                     '''   
             }
             post {
